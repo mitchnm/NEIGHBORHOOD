@@ -17,3 +17,13 @@ class Business(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     neighbourhood = models.ForeignKey('Neighbourhood')
     business_email = models.CharField(max_length=100)
+
+class Post(models.Model):
+    image = models.ImageField(upload_to = 'awards/')
+    post_description = models.CharField(max_length=500)
+    neighbourhood = models.ForeignKey('Neighbourhood')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile)
+    
+    def save_profile(self):
+        self.save()
