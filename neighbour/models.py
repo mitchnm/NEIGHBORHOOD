@@ -8,15 +8,18 @@ class Profile(models.Model):
     bio = models.CharField(max_length=250, null=True)
     neighbourhood = models.ForeignKey('Neighbourhood')
 
+
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=60)
     location = models.CharField(max_length=60)
+
 
 class Business(models.Model):
     business_name = models.CharField(max_length=60)
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     neighbourhood = models.ForeignKey('Neighbourhood')
     business_email = models.CharField(max_length=100)
+
 
 class Post(models.Model):
     image = models.ImageField(upload_to = 'awards/')
