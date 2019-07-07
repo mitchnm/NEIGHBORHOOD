@@ -15,7 +15,7 @@ def profile(request,id):
   current_user = request.user
   user = User.objects.get(id=id)
   try:
-    profile = profile.objects.get(user=id)
+    profile = Profile.objects.get(user=id)
   except ObjectDoesNotExist:
     return render(request, 'profile.html')
   return render(request, 'profile.html', {"post":post, "user":user, "profile":profile})

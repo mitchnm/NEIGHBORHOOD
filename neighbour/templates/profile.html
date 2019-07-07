@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+{% block content %}
+{{ block.super}}
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <img src="{{profile.profile_pic.url}}" class="img-fluid" alt="Image"
+          style="height: 250px; width:250px;margin-right: 50px">
+      </div>
+      <div class="col-md-3" style="border-left: 2px solid white;">
+        <br><br>
+        <h3 style="font-family: 'Righteous', cursive; color: white;">{{user.username}}</h3>
+        <h2 style="font-family: 'Iceland', cursive; color: white">{{profile.bio}}</h2>
+        <br>
+        <button class="btn btn-default"><a href="" style="color: black">Edit
+            profile</a></button>
+      </div>
+      <div class="col-md-3"></div>
+      <hr>
+    </div>
+    <div class="container">
+      <hr>
+      <div class="row">
+        {% for project in post %}
+        <div class="col-md-4">
+          <img style="margin:13px;height:300px;width:350px;" src="{{project.image.url}}" class="img-responsive"
+            alt="Image">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}
+
+</html>
