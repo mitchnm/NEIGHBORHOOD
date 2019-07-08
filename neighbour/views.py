@@ -44,15 +44,15 @@ def new_project(request, id):
         print('noo')
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
-            project = form.save(commit=False)
-            project.user = current_user
-            project.save()
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
         return redirect('welcome')
  
     else:
-        form = ProjectForm()
+        form = PostForm()
         print('xyz')
-    return render(request, 'project.html', {"form": form, 'user': current_user})
+    return render(request, 'post.html', {"form": form, 'user': current_user})
 
 
 @login_required(login_url='/accounts/login/')
