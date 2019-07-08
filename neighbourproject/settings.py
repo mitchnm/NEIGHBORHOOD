@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'neighbour.apps.NeighbourConfig',
     'bootstrap4',
+    'neighbour.apps.NeighbourConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post, Profile, Neighbourhood,Business
 from django.contrib.auth.decorators import login_required
+from .forms import ProfileForm, PostForm, NeighbourhoodForm, BusinessForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -38,7 +39,7 @@ def update_profile(request, id):
 
 
 @login_required(login_url='/accounts/login/')
-def new_project(request, id):
+def new_post(request, id):
     current_user = request.user
     if request.method == 'POST':
         print('noo')
@@ -68,3 +69,20 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html', {"message": message})
+
+@login_required(login_url='/accounts/login/')
+def new_neighbourhood(request, id):
+    current_user = request.user
+    if request.method == 'POST':
+        print('noo')
+        form = NeighbourhoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            neighbourhood = form.save(commit=False)
+            neighbourhood.user = current_user
+            neighbourhood.save()
+        return redirect('welcome')
+ 
+    else:
+        form = NeighbourhoodForm()
+        print('xyz')
+    return render(request, 'neighbourhood.html', {"form": form, 'user': current_user})

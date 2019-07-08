@@ -5,20 +5,20 @@ from django.forms import ModelForm, Textarea, IntegerField
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = [ 'name' ]
+        exclude = [ 'user' ]
 
 
-class ProjectForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         exclude = [ 'user', 'profile' ]
 
-class RatingForm(forms.ModelForm):
+class NeighbourhoodForm(forms.ModelForm):
     class Meta:
       model = Neighbourhood
       exclude = []
 
-class RatingForm(forms.ModelForm):
+class BusinessForm(forms.ModelForm):
     class Meta:
       model = Business
       exclude = []

@@ -6,14 +6,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>New Profile</title>
+  <title>New Post</title>
   {{form.media}}
-
-  {% block styles %}
-  {% bootstrap_css %}
-  {% endblock %}
-
 </head>
 
 <body>
@@ -21,9 +15,9 @@
   <div class="container">
     <div class="card mt-5">
       <div class="card-body">
-        <form action="{%url 'update_profile' user.id %}" method="POST" enctype="multipart/form-data">
+        <form action="{%url 'neighbourhood' user.id%}" method="POST" enctype="multipart/form-data">
           {%csrf_token%}
-          {% bootstrap_form form%}
+          {% bootstrap_form form %}
           <input type="submit" class="btn btn-success btn-lg" value="Post">
         </form>
       </div>
@@ -34,7 +28,6 @@
   {% bootstrap_javascript %}
   {% endblock %}
   {% endblock %}
-
 </body>
 
 </html>
