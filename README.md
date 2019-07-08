@@ -6,13 +6,12 @@
 This web app is to help people living in the same neighbourhood to connect and to be aware with what is happening in their surrounding.
 
 ## Setup Requirements
-Live site can be accessed from the following link Pre-configured Admin details are: Password:
+Live site can be accessed from the link in the description.
 
 ## Known bugs
 Not identified any but the user is welcome to view and identify if any.
 
 ## Behaviour Driven Development
-
 | Behavior our program should handle | Input description                                                                  |  Output description
 | ---------------------------------- | ---------------------------------------------------------------------------------- | ---
 | `Register/Sign up`                 | Fill in the required details                                                       | The user will recieve an activation email
