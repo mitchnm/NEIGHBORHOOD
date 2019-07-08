@@ -6,7 +6,7 @@ from .models import Profile, Post, Neighbourhood, Business
 class PostTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(id=2,username='a')
-        self.newpost = Post(image='media/insta/Fashion.jpg',description='Fashion',id =1,id=3,profile=self.user)
+        self.newpost = Post(image='media/insta/Fashion.jpg',description='Fashion',id=1,profile=self.user)
         
     def test_instance(self):
         self.assertTrue(isinstance(self.newpost,Post))
@@ -32,17 +32,27 @@ class ProfileTest(TestCase):
 class NeighbourhoodtTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(id =1,username='a')
-        self.newpost = Post(image='media/neighbourhood/Fashion.jpg',description='Fashion',id =1,id=3,profile=self.user)
+        self.newpost = Post(image='media/neighbourhood/Fashion.jpg',description='Fashion',id=3,profile=self.user)
         self.new_neighbourhood = Neighbourhood(name='boom',picture='media/neighbourhood/Fashion.jpg')
    
     def test_instance(self):
         self.assertTrue(isinstance(self.new_neighbourhood,Neighbourhood))
 
+    def test_save_image(self):
+        self.new_neighbourhood.save()
+        neighbourhood = Neighbourhood.objects.all()
+        self.assertTrue(len(neighbourhood)>0)
+
 class BusinessTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(id =1,username='a')
-        self.newpost = Post(image='media/neighbourhood/Fashion.jpg',description='Fashion',id =1,id=3,profile=self.user)
-        self.new_business = Business(image='media/neighbourhood/Fashion.jpg', )
+        self.newpost = Post(image='media/neighbourhood/Fashion.jpg',description='Fashion',id=3,profile=self.user)
+        self.new_business = Business(business_name='boom',image='media/neighbourhood/Fashion.jpg',id=5,business_email='boom@gmail.com')
    
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_rating,Comment))
+        self.assertTrue(isinstance(self.new_business,Business))
+
+    def test_save_image(self):
+        self.new_business.save()
+        business = Business.objects.all()
+        self.assertTrue(len(business)>0)
