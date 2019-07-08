@@ -3,13 +3,15 @@
 {% block content %}
 {{block.super}}
 <div class="container">
+  <h2 style="text-align: center;"><u>NEIGHBOURHOODS</u></h2>
+  <br><br>
   <div class="row">
     {% for hood in neighbourhood %}
-    <div class="col-md-4">
-      <img src="{{hood.picture.url}}" alt="image">
+    <div class="col-md-4" style="padding-bottom: 5%;">
+      <img src="{{hood.picture.url}}" alt="image" class="img-responsive" style="height: 300px; width:350px;">
       <h3>{{hood.name}}</h3>
       <h3>{{hood.location}}</h3>
-      <button><a href="{% url 'join' neighbourhood.id %}">Join Neighbourhood</a></button>
+      <button><a href="{% url 'join' hood.id %}">Join Neighbourhood</a></button>
     </div>
     {% empty %}
     {% endfor %}

@@ -26,7 +26,7 @@ class Business(models.Model):
 
 class Post(models.Model):
     image = models.ImageField(upload_to = 'neighbourhood/')
-    post_description = models.CharField(max_length=500)
+    description = models.CharField(max_length=500)
     neighbourhood = models.ForeignKey('Neighbourhood')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile)
