@@ -3,11 +3,16 @@
 {% block content %}
 {{block.super}}
 <div class="container">
-  {% for hood in neighbourhood %}
-  <img src="{{hood.picture.url}}" alt="image">
-  <h3>{{hood.name}}</h3>
-  <h3>{{hood.location}}</h3>
-  {% empty %}
-  {% endfor %}
+  <div class="row">
+    {% for hood in neighbourhood %}
+    <div class="col-md-4">
+      <img src="{{hood.picture.url}}" alt="image">
+      <h3>{{hood.name}}</h3>
+      <h3>{{hood.location}}</h3>
+      <button><a href="{% url 'join' neighbourhood.id %}">Join Neighbourhood</a></button>
+    </div>
+    {% empty %}
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

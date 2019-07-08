@@ -86,5 +86,24 @@ def new_neighbourhood(request, id):
     else:
         form = NeighbourhoodForm()
         print('xyz')
-    return render(request, 'neighbourhood.html', {"form": form, 'user': current_user})
+    return render(request, 'add_neighbourhood.html', {"form": form, 'user': current_user})
 
+@login_required(login_url='/accounts/login/')
+def add_business(request, id):
+    current_user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.username = current_user
+            business.name_id = current_user.id
+            business.save()
+        return render(request, 'profile.html')
+
+    else:
+        form = BusinessForm()
+    return render(request, 'business.html', {"form": form, "user": current_user})
+
+@login_required(login_url='/accounts/login')
+def join(request,id):
+   return redirect(request,'neighbourhood.html',)

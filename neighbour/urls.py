@@ -9,7 +9,9 @@ urlpatterns = [
   url(r'^update_profile/(\d+)',views.update_profile,name='update_profile'),
   url(r'^project/(\d+)',views.new_post,name='post'),
   url(r'^search/', views.search_results, name='search_results'),
-  url(r'^neighbourhood/(\d+)', views.new_neighbourhood, name='neighbourhood'),
+  url(r'^add_neighbourhood/(\d+)', views.new_neighbourhood, name='neighbourhood'),
+  url(r'^business/(\d+)', views.add_business, name='business'),
+  url(r'^neighbourhood/(\d+)', views.join, name='join'),
 ]
 
 if settings.DEBUG:

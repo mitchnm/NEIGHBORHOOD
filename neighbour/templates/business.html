@@ -12,7 +12,17 @@
 
 <body>
   {% block content %}
-  <button><a href="{%url 'business' user.id%}">Add business</a></button>
+  <div class="container">
+    <div class="card mt-5">
+      <div class="card-body">
+        <form action="{%url 'business' user.id%}" method="POST" enctype="multipart/form-data">
+          {%csrf_token%}
+          {% bootstrap_form form %}
+          <input type="submit" class="btn btn-success btn-lg" value="Post">
+        </form>
+      </div>
+    </div>
+  </div>
   {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %}
