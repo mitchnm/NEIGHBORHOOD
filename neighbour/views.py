@@ -33,7 +33,7 @@ def update_profile(request, id):
         if form.is_valid():
             profile = form.save(commit=False)
             profile.username = current_user
-            profile.name_id = current_user.id
+            profile.user_id = current_user.id
             profile.save()
         return render(request, 'profile.html')
 
@@ -48,10 +48,13 @@ def new_post(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
     if request.method == 'POST':
         print('noo')
-        form = ProjectForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = current_user
+            post.user.id = current_user.id
+            post.neighbourhood = neighbourhood
+            post.neighbourhood.id = neighbourhood.id
             post.save()
         return redirect('welcome')
 
@@ -66,7 +69,8 @@ def search_results(request):
 
     if 'profile' in request.GET and request.GET["profile"]:
         search_term = request.GET.get("profile")
-        searched_profiles = Neighbourhood.objects.filter(name__icontains=search_term)
+        searched_profiles = Neighbourhood.objects.filter(
+            name__icontains=search_term)
         neighbourhood = Neighbourhood.objects.all()
         message = f"{search_term}"
         return render(request, 'search.html', {"message": message, "neighbourhood1": searched_profiles, "neighbourhood": neighbourhood})
@@ -78,7 +82,6 @@ def search_results(request):
 @login_required(login_url='/accounts/login/')
 def new_neighbourhood(request, id):
     current_user = request.user
-    neighbourhood = Neighbourhood.objects.get(id=id)
     if request.method == 'POST':
         print('noo')
         form = NeighbourhoodForm(request.POST, request.FILES)
@@ -91,24 +94,27 @@ def new_neighbourhood(request, id):
     else:
         form = NeighbourhoodForm()
         print('xyz')
-    return render(request, 'add_neighbourhood.html', {"form": form, 'user': current_user, "neighbourhood": neighbourhood})
+    return render(request, 'add_neighbourhood.html', {"form": form, 'user': current_user})
 
 
 @login_required(login_url='/accounts/login/')
 def add_business(request, id):
     current_user = request.user
+    neighbourhood = Neighbourhood.objects.get(id=id)
     if request.method == 'POST':
         form = BusinessForm(request.POST, request.FILES)
         if form.is_valid():
             business = form.save(commit=False)
             business.username = current_user
-            business.name_id = current_user.id
+            business.user_id = current_user.id
+            business.neighbourhood = neighbourhood
+            business.neighbourhood.id = neighbourhood.id
             business.save()
-        return render(request, 'profile.html')
+        return render(request, 'neighbourhood.html')
 
     else:
         form = BusinessForm()
-    return render(request, 'business.html', {"form": form, "user": current_user})
+    return render(request, 'business.html', {"form": form, "user": current_user, "neighbourhood": neighbourhood})
 
 
 @login_required(login_url='/accounts/login')

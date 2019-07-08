@@ -19,7 +19,7 @@
       <h2 style="text-align: center;font-family: 'Righteous', cursive;font-size: 60px; ">{{profile1.name}}</h2>
       <br><br>
       <p style="text-align: center; font-family: 'Iceland', cursive;font-size: 30px; ">{{profile1.location}}</p>
-      <a class="btn btn-default" href="{% url 'join' profile1.id %}">Join Neighbourhood</a>
+      <button><a class="btn btn-default" href="{% url 'join' profile1.id %}">Join Neighbourhood</a></button>
       {% endfor %}
     </div>
     <div class="col-md-2"></div>
