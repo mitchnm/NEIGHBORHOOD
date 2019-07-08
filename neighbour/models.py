@@ -22,7 +22,7 @@ class Business(models.Model):
     image = models.ImageField(upload_to = 'neighbourhood/',blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     neighbourhood = models.ForeignKey('Neighbourhood')
-    business_email = models.CharField(max_length=100)
+    business_email = models.EmailField(max_length=100)
 
 
 class Post(models.Model):

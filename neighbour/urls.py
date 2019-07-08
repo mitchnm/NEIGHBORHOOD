@@ -12,6 +12,7 @@ urlpatterns = [
   url(r'^add_neighbourhood/(\d+)', views.new_neighbourhood, name='neighbourhood'),
   url(r'^business/(\d+)', views.add_business, name='business'),
   url(r'^neighbourhood/(\d+)', views.join, name='join'),
+  url(r'^$', views.leave, name='leave')
 ]
 
 if settings.DEBUG:

@@ -20,35 +20,47 @@
       <br><br>
       <button><a href="{%url 'business' neighbourhood.id%}">Add Business</a></button>
       <button><a href="{% url 'post' neighbourhood.id %}">Add Post</a></button>
+      <button><a href="{% url 'leave' %}">Leave Neighbourhood</a></button>
     </div>
     <br><br>
     <h2 style="text-align: center;"><u>POSTS</u></h2>
     <br><br>
     <div class="row">
       {% if post %}
-      <div class="card" style="width:350px;height:300px">
-        <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:350px;height:300px">
-        <div class="card-body">
-          <p class="card-text">{{post.description}}</p>
+      {% for post in post %}
+      <div class="col-md-4">
+        <div class="card" style="width:350px;height:400px; padding-bottom: 5%;">
+          <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:350px;height:300px">
+          <div class="card-body">
+            <p class="card-text">{{post.description}}</p>
+          </div>
         </div>
       </div>
+      <br><br>
+      {% empty %}
+      {% endfor %}
       {% else %}
-      <h3>No available posts on this neighbourhood</h3>
+      <h3 class="text-center">No available posts on this neighbourhood</h3>
       {% endif %}
     </div>
+    <hr>
     <br><br>
     <h2 style="text-align: center;"><u>BUSINESSES</u></h2>
     <br><br>
     <div class="row">
       {% if business %}
-      <div class="card" style="width:350px;height:300px">
+      {% for business in business %}
+      <div class="card" style="width:350px;height:375px; padding-bottom: 5%;">
         <img class="card-img-top" src="{{business.image.url}}" alt="Card image" style="width:350px;height:300px">
         <div class="card-body">
-          <p class="card-text">{{business.description}}</p>
+          <p class="card-text">Email: {{business.business_email}}</p>
         </div>
       </div>
+      <hr>
+      {% empty %}
+      {% endfor %}
       {% else %}
-      <h3>No available businesses on this neighbourhood</h3>
+      <h3 style="text-align: center">No available businesses on this neighbourhood</h3>
       {% endif %}
     </div>
     {% block scripts %}

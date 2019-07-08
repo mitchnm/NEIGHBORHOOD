@@ -120,6 +120,10 @@ def add_business(request, id):
 @login_required(login_url='/accounts/login')
 def join(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
-    post = Post.objects.get(id=id)
-    business = Business.objects.get(neighbourhood_id=id)
+    post = Post.objects.filter(neighbourhood_id=id)
+    business = Business.objects.filter(neighbourhood_id=id)
     return render(request, 'neighbourhood.html', {"neighbourhood": neighbourhood,"post":post,"business":business})
+
+@login_required(login_url='/accounts/login')
+def leave(request):
+    return redirect('welcome')
