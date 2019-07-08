@@ -56,7 +56,7 @@ def new_post(request, id):
             post.neighbourhood = neighbourhood
             post.neighbourhood.id = neighbourhood.id
             post.save()
-        return render(request, 'neighbourhood.html')
+        return redirect('welcome')
 
     else:
         form = PostForm()
@@ -110,7 +110,7 @@ def add_business(request, id):
             business.neighbourhood = neighbourhood
             business.neighbourhood.id = neighbourhood.id
             business.save()
-        return render(request, 'neighbourhood.html')
+        return redirect('welcome')
 
     else:
         form = BusinessForm()
@@ -120,4 +120,6 @@ def add_business(request, id):
 @login_required(login_url='/accounts/login')
 def join(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
-    return render(request, 'neighbourhood.html', {"neighbourhood": neighbourhood})
+    post = Post.objects.get(id=id)
+    business = Business.objects.get(neighbourhood_id=id)
+    return render(request, 'neighbourhood.html', {"neighbourhood": neighbourhood,"post":post,"business":business})

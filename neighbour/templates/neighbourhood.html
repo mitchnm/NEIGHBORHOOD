@@ -24,7 +24,33 @@
     <br><br>
     <h2 style="text-align: center;"><u>POSTS</u></h2>
     <br><br>
+    <div class="row">
+      {% if post %}
+      <div class="card" style="width:350px;height:300px">
+        <img class="card-img-top" src="{{post.image.url}}" alt="Card image" style="width:350px;height:300px">
+        <div class="card-body">
+          <p class="card-text">{{post.description}}</p>
+        </div>
+      </div>
+      {% else %}
+      <h3>No available posts on this neighbourhood</h3>
+      {% endif %}
+    </div>
+    <br><br>
     <h2 style="text-align: center;"><u>BUSINESSES</u></h2>
+    <br><br>
+    <div class="row">
+      {% if business %}
+      <div class="card" style="width:350px;height:300px">
+        <img class="card-img-top" src="{{business.image.url}}" alt="Card image" style="width:350px;height:300px">
+        <div class="card-body">
+          <p class="card-text">{{business.description}}</p>
+        </div>
+      </div>
+      {% else %}
+      <h3>No available businesses on this neighbourhood</h3>
+      {% endif %}
+    </div>
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% bootstrap_javascript %}
