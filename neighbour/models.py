@@ -30,7 +30,7 @@ class Post(models.Model):
     description = models.CharField(max_length=500)
     neighbourhood = models.ForeignKey('Neighbourhood')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    profile = models.ForeignKey('Profile', null)
+    profile = models.ForeignKey('Profile', null=True)
     
     def save_profile(self):
         self.save()

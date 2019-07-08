@@ -56,7 +56,7 @@ def new_post(request, id):
             post.neighbourhood = neighbourhood
             post.neighbourhood.id = neighbourhood.id
             post.save()
-        return redirect('welcome')
+        return render(request, 'neighbourhood.html')
 
     else:
         form = PostForm()
