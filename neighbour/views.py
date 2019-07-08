@@ -19,10 +19,10 @@ def profile(request, id):
     current_user = request.user
     user = User.objects.get(id=id)
     try:
-        profile = Profile.objects.get(user=id)
+        profile = Profile.objects.get(user_id=id)
     except ObjectDoesNotExist:
         return render(request, 'profile.html')
-    return render(request, 'profile.html', {"post": post, "user": user, "profile": profile})
+    return render(request, 'profile.html', {"post": post, "user": user, "profile": profile, "user":user})
 
 
 @login_required(login_url='/accounts/login/')

@@ -18,13 +18,14 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-3">
-        <img src="{{profile.profile_pic.url}}" class="img-fluid" alt="Image"
+        <img src="{{profile.profile_pic.url}}" class="rounded-circle" alt="Image"
           style="height: 250px; width:250px;margin-right: 50px">
       </div>
-      <div class="col-md-3" style="border-left: 2px solid white;">
+      <div class="col-md-3" style="border-left: 2px solid black;">
         <br><br>
-        <h3 style="font-family: 'Righteous', cursive; color: white;">{{user.username}}</h3>
-        <h2 style="font-family: 'Iceland', cursive; color: white">{{profile.bio}}</h2>
+        <h3 style="font-family: 'Righteous', cursive;">{{user.username}}</h3>
+        <h2 style="font-family: 'Iceland', cursive;">{{profile.bio}}</h2>
+        <h2 style="font-family: 'Iceland', cursive;">Hood: {{profile.neighbourhood}}</h2>
         <br>
         <button class="btn btn-default"><a href="{% url 'update_profile' user.id %}" style="color: black">Edit
             profile</a></button>
@@ -37,7 +38,7 @@
       <div class="row">
         {% for project in post %}
         <div class="col-md-4">
-          <img style="margin:13px;height:300px;width:350px;" src="{{post.image.url}}" class="img-responsive"
+          <img style="margin:13px;height:300px;width:350px;" src="{{project.image.url}}" class="img-responsive"
             alt="Image">
         </div>
         {% endfor %}

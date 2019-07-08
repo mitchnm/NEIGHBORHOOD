@@ -11,7 +11,7 @@
       <img src="{{hood.picture.url}}" alt="image" class="img-responsive" style="height: 300px; width:350px;">
       <h3>{{hood.name}}</h3>
       <h3>{{hood.location}}</h3>
-      <button><a href="{% url 'join' hood.id %}">Join Neighbourhood</a></button>
+      <button class="btn btn-default" ><a href="{% url 'join' hood.id %}" style="color: black;">Join Neighbourhood</a></button>
     </div>
     {% empty %}
     {% endfor %}

@@ -13,13 +13,13 @@
     {% for profile1 in neighbourhood1 %}
     <div class="col-md-2"></div>
     <div class="col-md-4">
-      <img src="{{profile1.picture.url}}" class="img-circle" alt="image" style="height:200px; width:200px;">
+      <img src="{{profile1.picture.url}}" class="img-circle" alt="image" style="height:300px; width:300px;">
     </div>
     <div lass="col-md-4">
       <h2 style="text-align: center;font-family: 'Righteous', cursive;font-size: 60px; ">{{profile1.name}}</h2>
       <br><br>
-      <p style="text-align: center; font-family: 'Iceland', cursive;font-size: 30px; ">{{profile1.location}}</p>
-      <button><a class="btn btn-default" href="{% url 'join' profile1.id %}">Join Neighbourhood</a></button>
+      <p style="text-align: center; font-family: 'Iceland', cursive;font-size: 30px; ">{{profile1.location}}</p><br>
+      <button class="btn btn-default" ><a href="{% url 'join' profile1.id %}" style="color: black;">Join Neighbourhood</a></button>
       {% endfor %}
     </div>
     <div class="col-md-2"></div>
