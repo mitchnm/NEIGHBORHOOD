@@ -3,6 +3,11 @@
 {% block content %}
 {{block.super}}
 <div class="container">
-  <h1 style="top:50%;left:50%;">HELLO!</h1>
+  {% for hood in neighbourhood %}
+  <img src="{{hood.picture.url}}" alt="image">
+  <h3>{{hood.name}}</h3>
+  <h3>{{hood.location}}</h3>
+  {% empty %}
+  {% endfor %}
 </div>
 {% endblock %}

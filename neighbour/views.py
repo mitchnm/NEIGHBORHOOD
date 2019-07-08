@@ -8,7 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
-    return render(request, 'index.html')
+    neighbourhood = Neighbourhood.objects.all()
+    return render(request, 'index.html', {"neighbourhood":neighbourhood})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -86,3 +87,4 @@ def new_neighbourhood(request, id):
         form = NeighbourhoodForm()
         print('xyz')
     return render(request, 'neighbourhood.html', {"form": form, 'user': current_user})
+

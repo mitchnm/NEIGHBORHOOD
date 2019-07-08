@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
-    profile_pic = models.ImageField(upload_to = 'awards/',blank=True)
+    profile_pic = models.ImageField(upload_to = 'neighbourhood/',blank=True)
     bio = models.CharField(max_length=250, null=True)
     neighbourhood = models.ForeignKey('Neighbourhood')
 
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=60)
+    picture = models.ImageField(upload_to = 'neighbourhood/',blank=True)
     location = models.CharField(max_length=60)
 
 
@@ -22,7 +23,7 @@ class Business(models.Model):
 
 
 class Post(models.Model):
-    image = models.ImageField(upload_to = 'awards/')
+    image = models.ImageField(upload_to = 'neighbourhood/')
     post_description = models.CharField(max_length=500)
     neighbourhood = models.ForeignKey('Neighbourhood')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
