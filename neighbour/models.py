@@ -7,7 +7,9 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'neighbourhood/',blank=True)
     bio = models.CharField(max_length=250, null=True)
     neighbourhood = models.ForeignKey('Neighbourhood')
-
+    
+    def save_profile(self):     
+        self.save()
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=60)
@@ -17,6 +19,9 @@ class Neighbourhood(models.Model):
     def __str__(self):
         return self.name
 
+    def save_profile(self):     
+        self.save()
+
 class Business(models.Model):
     business_name = models.CharField(max_length=60)
     image = models.ImageField(upload_to = 'neighbourhood/',blank=True)
@@ -24,6 +29,8 @@ class Business(models.Model):
     neighbourhood = models.ForeignKey('Neighbourhood')
     business_email = models.EmailField(max_length=100)
 
+    def save_profile(self):     
+        self.save()
 
 class Post(models.Model):
     image = models.ImageField(upload_to = 'neighbourhood/')
